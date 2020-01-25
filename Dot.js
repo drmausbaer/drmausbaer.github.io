@@ -3,7 +3,7 @@ class Dot {
   constructor( t1, t2, velX) {
     this.position = createVector(t1.pixelPos.x + tileSize/2, t1.pixelPos.y + tileSize/2);
     this.startingPos = createVector(t1.pixelPos.x + tileSize/2, t1.pixelPos.y + tileSize/2);
-    this.speed = floor((tileSize*1.05)/(6.6));
+    this.speed = floor((tileSize*1)/(6.6));
     this.velocity = createVector(velX*this.speed, 0);
     this.startingVel = createVector(velX*this.speed, 0);
     this.bouncers = [];
