@@ -92,7 +92,7 @@ function setup() {
    setDots();
    winArea = new Solid(tiles[17][2], tiles[19][7]);
    testPopulation = new Population(populationSize);
-   img = loadImage("assets/DAB.png");
+   //img= loadImage("assets/DAB.png");
 
   //prevents the window from moving from the arrow keys or the spacebar
     window.addEventListener("keydown", function(e) {
@@ -238,10 +238,10 @@ function writeShit(){
       push();
 
       scale(-1.0,1.0);
-      image(img,-300 -img.width + random(5),100+ random(5));
+      //image(img,-300 -img.width + random(5),100+ random(5));
       pop();
     }else{
-    image(img,300+ random(5),100 + random(5));
+    //image(img,300+ random(5),100 + random(5));
     }
     textSize(100);
     stroke(0);
