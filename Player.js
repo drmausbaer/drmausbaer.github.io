@@ -2,8 +2,8 @@ class Player{
   constructor(){
     this.pos = createVector(3*tileSize + xoff,4* tileSize + yoff);
     this.vel = createVector(0,0);
-    this.size = tileSize*1.25/2.0;
-    this.playerSpeed = tileSize*0.8/15.0;
+    this.size = tileSize/2.0;
+    this.playerSpeed = tileSize/15.0;
     this.dead = false;
     this.reachedGoal = false;
     this.fadeCounter = 255;
@@ -19,7 +19,7 @@ class Player{
     this.human = true;
     //let this.av;
     this.setNodes();
-
+    this.Death = 0;
   }
 
   setNodes() {
@@ -29,8 +29,8 @@ class Player{
   }
 
   show(){
-    image(avatar, this.pos.x, this.pos.y, this.size, this.size/*, 50, 50, 50, 50*/);
-    fill(0, 0, 0, 255-this.fadeCounter);
+    //image(avatar, this.pos.x, this.pos.y, this.size, this.size/*, 50, 50, 50, 50*/);
+    fill(255, 0, 0, this.fadeCounter);
     if (this.isBest && !showBest) {
       fill(0, 255, 0, 255-this.fadeCounter);
     }
@@ -72,6 +72,7 @@ checkCollisions() {
     if (dots[i].collides(this.pos, createVector(this.pos.x+this.size, this.pos.y+this.size))) {
       this.fading = true;
       this.dead = true;
+      Death = Death + 1;
       this.deathByDot = true;
       this.deathAtStep = this.brain.step;
     }

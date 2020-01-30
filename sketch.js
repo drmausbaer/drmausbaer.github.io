@@ -45,6 +45,7 @@ var mutationRate = 0.01;
 var mrPara;
 var mrPlus;
 var mrMinus;
+var Death= 0;
 
 //evolution speed vars
 var evolutionSpeed =1;
@@ -67,7 +68,7 @@ var everyMinus;
 
 let avatar
 function preload(){
-  avatar = loadImage("icons/face_co.svg")
+  avatar = loadImage("icons/Dove.png")
 }
 
 function setup() {
@@ -92,7 +93,7 @@ function setup() {
    setDots();
    winArea = new Solid(tiles[17][2], tiles[19][7]);
    testPopulation = new Population(populationSize);
-   //img= loadImage("assets/DAB.png");
+   img = loadImage("assets/DAB.png");
 
   //prevents the window from moving from the arrow keys or the spacebar
     window.addEventListener("keydown", function(e) {
@@ -106,7 +107,7 @@ function setup() {
 function draw(){
   background(180, 181, 254);
  drawTiles();
- //writeShit();
+ writeShit();
 
 
  if (humanPlaying) {//if the user is controlling the square
@@ -232,42 +233,43 @@ function writeShit(){
   //text(" \tPress P to play the game yourself \t\t\t\t\t\t\t\t Press G to replay evolution highlights",250,620 );
   //text("Press SPACE to only show the best player", 450,680);
   textSize(36);
-  if(winCounter > 0){
-
-    if(flip){
-      push();
-
-      scale(-1.0,1.0);
-      //image(img,-300 -img.width + random(5),100+ random(5));
-      pop();
-    }else{
-    //image(img,300+ random(5),100 + random(5));
-    }
-    textSize(100);
-    stroke(0);
-
-    text("WOOOOOOOOOOOO", 110,400);
-    winCounter --;
-    if(winCounter % 10 ==0){
-
-      flip = !flip;
-    }
-    textSize(36);
-    noStroke();
-  }
-  if (replayGens) {
-    text("Generation: " + genPlayer.gen, 200, 90);
-    text("Number of moves: " + genPlayer.brain.directions.length, 700, 90);
-  } else if(!humanPlaying) {
-    text("Generation: " + testPopulation.gen, 200, 90);
-    if(testPopulation.solutionFound){
-      text("Wins in " + testPopulation.minStep + " moves",700, 90);
-    }else{
-      text("Number of moves: " + testPopulation.players[0].brain.directions.length, 700, 90);
-    }
-  }else{
-    //text("Have Fun ;)", 500,90);
-  }
+  // if(winCounter > 0){
+  //
+  //   if(flip){
+  //     push();
+  //
+  //     scale(-1.0,1.0);
+  //     image(img,-300 -img.width + random(5),100+ random(5));
+  //     pop();
+  //   }else{
+  //   image(img,300+ random(5),100 + random(5));
+  //   }
+  //   textSize(100);
+  //   stroke(0);
+  //
+  //   text("WOOOOOOOOOOOO", 110,400);
+  //   winCounter --;
+  //   if(winCounter % 10 ==0){
+  //
+  //     flip = !flip;
+  //   }
+  //   textSize(36);
+  //   noStroke();
+  // }
+  // if (replayGens) {
+  //   text("Generation: " + genPlayer.gen, 200, 90);
+  //   text("Number of moves: " + genPlayer.brain.directions.length, 700, 90);
+  // } else if(!humanPlaying) {
+  //   text("Generation: " + testPopulation.gen, 200, 90);
+  //   if(testPopulation.solutionFound){
+  //     text("Wins in " + testPopulation.minStep + " moves",700, 90);
+  //   }else{
+  //     text("Number of moves: " + testPopulation.players[0].brain.directions.length, 700, 90);
+  //   }
+  // }else{
+  //   //text("Have Fun ;)", 500,90);
+  // }
+  text("Deaths: "+Death, 700 , 90);
 }
 function keyPressed(){
   if(humanPlaying){
