@@ -2,7 +2,7 @@ class Player{
   constructor(){
     this.pos = createVector(3*tileSize + xoff,4* tileSize + yoff);
     this.vel = createVector(0,0);
-    this.size = tileSize/1.8;
+    this.size = tileSize/1.5;
     this.playerSpeed = tileSize/15.0;
     this.dead = false;
     this.reachedGoal = false;
