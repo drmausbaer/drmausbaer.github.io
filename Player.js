@@ -2,8 +2,8 @@ class Player{
   constructor(){
     this.pos = createVector(3*tileSize + xoff,4* tileSize + yoff);
     this.vel = createVector(0,0);
-    this.size = tileSize*1.25/2.0;
-    this.playerSpeed = tileSize*0.8/15.0;
+    this.size = tileSize/2.0;
+    this.playerSpeed = tileSize/15.0;
     this.dead = false;
     this.reachedGoal = false;
     this.fadeCounter = 255;
@@ -16,6 +16,7 @@ class Player{
     this.nodes = [];
     this.fading = false;
     this.brain = new Brain(numberOfSteps);
+    this.coin = new Coin(11*tileSize+xoff, 5*tileSize+yoff);
     this.human = true;
     //let this.av;
     this.setNodes();
@@ -23,8 +24,14 @@ class Player{
   }
 
   setNodes() {
-    this.nodes[0] = new Node(tiles[6][7]);
-    this.nodes[1] = new Node(tiles[17][2]);
+    if(level == 1){
+    this.nodes[0] = new Node(tiles[6][7],false,true);
+    this.nodes[1] = new Node(tiles[17][2],true,false);
+    }
+    if (level == 2){
+    this.nodes[1] = new Node(tiles[19][5],true,false);
+    this.nodes[0] = new Node(this.coin,false,true);
+    }
     this.nodes[0].setDistanceToFinish(this.nodes[1]);
   }
 
@@ -39,6 +46,9 @@ class Player{
     //image(avatar, this.x, this.y);
     rect(this.pos.x, this.pos.y, this.size, this.size);
     //stroke(0);
+    if(level==2){
+      this.coin.show();
+    }
   }
 
   move(){
@@ -68,6 +78,7 @@ class Player{
 
   //checks if the player
 checkCollisions() {
+  this.coin.collides(this.pos, createVector(this.pos.x+this.size, this.pos.y+this.size));
   for (var i = 0; i< dots.length; i++) {
     if (dots[i].collides(this.pos, createVector(this.pos.x+this.size, this.pos.y+this.size))) {
       this.fading = true;
@@ -75,9 +86,27 @@ checkCollisions() {
       Death = Death + 1;
       this.deathByDot = true;
       this.deathAtStep = this.brain.step;
+
+      for (var i = 0; i< 22; i++) {
+        tiles[i] = [];
+        for (var j = 0; j< 10; j++) {
+          tiles[i][j] = new Tile(i, j);
+        }
+      }
+      solids=[];
+      dots=[];
+      resetDots();
+      setDots();
+      setLevel1Walls();
+       setLevel1Goal();
+       setLevel1SafeArea();
+       setEdges();
+       setSolids();
     }
   }
-  if (winArea.collision(this.pos, createVector(this.pos.x+this.size, this.pos.y+this.size))) {
+  if (winArea.collision(this.pos, createVector(this.pos.x+this.size, this.pos.y+this.size))&&level==1) {
+    this.reachedGoal = true;
+  } else if (level==2&&this.coin.taken && winArea.collision(this.pos, createVector(this.pos.x+this.size, this.pos.y+this.size))) {
     this.reachedGoal = true;
   }
   for (var i = 0; i< this.nodes.length; i++) {
