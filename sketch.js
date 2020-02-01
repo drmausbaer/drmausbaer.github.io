@@ -227,7 +227,7 @@ function saveDots(){
 
 function writeShit(){
 
-  fill(247, 247, 255);
+  fill(0, 0, 0);
   textSize(20);
   noStroke();
   //text(" \tPress P to play the game yourself \t\t\t\t\t\t\t\t Press G to replay evolution highlights",250,620 );
