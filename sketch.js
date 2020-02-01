@@ -1,3 +1,4 @@
+var level = 1;
 var tileSize = 50;
 var xoff = 80;
 var yoff = 100;
@@ -66,10 +67,15 @@ var everyPara;
 var everyPlus;
 var everyMinus;
 
+var firstClick = true;
+var showedCoin = false;
+
 let avatar
 function preload(){
-  avatar = loadImage("icons/face_co.png")
+  avatar = loadImage("icons/Dove.png")
 }
+
+
 
 function setup() {
   var canvas = createCanvas(1280,720);
@@ -105,6 +111,8 @@ function setup() {
 }
 
 function draw(){
+
+    showedCoin = false;
   background(180, 181, 254);
  drawTiles();
  writeShit();
@@ -115,6 +123,22 @@ function draw(){
      //reset player and dots
      if(p.reachedGoal){
        winCounter = 100;
+       level = 2;
+       for (var i = 0; i< 22; i++) {
+         tiles[i] = [];
+         for (var j = 0; j< 10; j++) {
+           tiles[i][j] = new Tile(i, j);
+         }
+       }
+       solids=[];
+       dots=[];
+       resetDots();
+       setDots();
+       setLevel1Walls();
+        setLevel1Goal();
+        setLevel1SafeArea();
+        setEdges();
+        setSolids();
 
      }
      p = new Player();
@@ -130,8 +154,7 @@ function draw(){
      p.update();
      p.show();
    }
- } else
-   if (replayGens) {//if replaying the best generations
+ } else if (replayGens) {//if replaying the best generations
      if ((genPlayer.dead && genPlayer.fadeCounter <=0) || genPlayer.reachedGoal) { //if the current gen is done
        upToGenPos ++;//next gen
        if (testPopulation.genPlayers.length <= upToGenPos) {//if reached the final gen
@@ -227,7 +250,7 @@ function saveDots(){
 
 function writeShit(){
 
-  fill(0, 0, 0);
+  fill(247, 247, 255);
   textSize(20);
   noStroke();
   //text(" \tPress P to play the game yourself \t\t\t\t\t\t\t\t Press G to replay evolution highlights",250,620 );
@@ -327,7 +350,7 @@ function keyPressed(){
     if (humanPlaying) {//if human is currently playing
 
      //reset dots to position
-     humanPlaying = false;
+     //humanPlaying = false;
      loadDots();
    } else {//if AI is currently playing
      if (replayGens) {
