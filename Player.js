@@ -36,7 +36,7 @@ class Player{
   }
 
   show(){
-    //image(avatar, this.pos.x, this.pos.y, this.size, this.size/*, 50, 50, 50, 50*/);
+    image(avatar, this.pos.x, this.pos.y, this.size, this.size/*, 50, 50, 50, 50*/);
     fill(255, 0, 0, this.fadeCounter);
     if (this.isBest && !showBest) {
       fill(0, 255, 0, 255-this.fadeCounter);
