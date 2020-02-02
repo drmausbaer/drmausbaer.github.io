@@ -43,7 +43,7 @@ class Player{
     }
     stroke(0, 0, 0, this.fadeCounter);
     strokeWeight(2);
-    //image(avatar, this.x, this.y);
+    image(avatar, this.x, this.y);
     rect(this.pos.x, this.pos.y, this.size, this.size);
     //stroke(0);
     if(level==2){
