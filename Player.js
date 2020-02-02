@@ -37,7 +37,7 @@ class Player{
 
   show(){
     image(avatar, this.pos.x, this.pos.y, this.size, this.size/*, 50, 50, 50, 50*/);
-    fill(255, 0, 0, this.fadeCounter);
+    fill(0, 0, 0, 255-this.fadeCounter);
     if (this.isBest && !showBest) {
       fill(0, 255, 0, 255-this.fadeCounter);
     }
@@ -45,7 +45,7 @@ class Player{
     strokeWeight(2);
     image(avatar, this.x, this.y);
     rect(this.pos.x, this.pos.y, this.size, this.size);
-    //stroke(0);
+    stroke(0);
     if(level==2){
       this.coin.show();
     }
