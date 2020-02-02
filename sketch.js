@@ -72,7 +72,7 @@ var showedCoin = false;
 
 let avatar
 function preload(){
-  avatar = loadImage("icons/face_co.png")
+  avatar = loadImage("icons/m13132.png")
 }
 
 
