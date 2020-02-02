@@ -292,6 +292,7 @@ function writeShit(){
   // }else{
   //   //text("Have Fun ;)", 500,90);
   // }
+  text("Level: "+level, 400 , 90);
   text("Deaths: "+Death, 700 , 90);
 }
 function keyPressed(){
