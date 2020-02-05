@@ -15,7 +15,7 @@ let avatar
 function preload(){
   var z="icons/"
   if(icon==false){
-    icon="Dove";
+    icon="f11111";
   }
   icon=z+icon+".png";
   avatar = loadImage(icon);
