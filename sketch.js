@@ -1,3 +1,37 @@
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+var ID=getQueryVariable("id");
+var Death= 0;
+var Wins= 0;
+
+var icon=getQueryVariable("Av");
+var zed = icon;
+let avatar
+function preload(){
+  var z="icons/"
+  if(icon==false){
+    icon="Dove";
+  }
+  icon=z+icon+".png";
+  avatar = loadImage(icon);
+}
+
+var delayInMilliseconds = 900*60*2; //1 second
+
+setTimeout(function relocate(){
+    var z="https://lasttryphp.appspot.com/?Id="+ID+"&Deaths="+Death+"&Wins="+Wins+"&Av="+zed;
+    window.location.href = z;
+}, delayInMilliseconds);
+
+
 var level = 1;
 var tileSize = 50;
 var xoff = 80;
@@ -46,7 +80,7 @@ var mutationRate = 0.01;
 var mrPara;
 var mrPlus;
 var mrMinus;
-var Death= 0;
+//var Death= 0;
 
 //evolution speed vars
 var evolutionSpeed =1;
