@@ -158,6 +158,7 @@ function draw(){
      if(p.reachedGoal){
        winCounter = 100;
        level = 2;
+              Wins=Wins+1;
        for (var i = 0; i< 22; i++) {
          tiles[i] = [];
          for (var j = 0; j< 10; j++) {
