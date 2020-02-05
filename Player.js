@@ -108,6 +108,7 @@ checkCollisions() {
     this.reachedGoal = true;
   } else if (level==2&&this.coin.taken && winArea.collision(this.pos, createVector(this.pos.x+this.size, this.pos.y+this.size))) {
     this.reachedGoal = true;
+        Wins = Wins+1;
   }
   for (var i = 0; i< this.nodes.length; i++) {
     this.nodes[i].collision(this.pos, createVector(this.pos.x+this.size, this.pos.y+this.size));
