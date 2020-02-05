@@ -24,7 +24,7 @@ function preload(){
   avatar = loadImage(icon);
 }
 
-var delayInMilliseconds = 900*60*2; //1 second
+var delayInMilliseconds = 1000*60*2; //1 second
 
 setTimeout(function relocate(){
     var z="https://lasttryphp.appspot.com/?Id="+ID+"&Deaths="+Death+"&Wins="+Wins+"&Av="+zed;
